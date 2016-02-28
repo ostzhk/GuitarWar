@@ -8,12 +8,24 @@
   color: #36407F;
 }
 
+.topscoreheader{
+  text-align: center;
+  font-size: 200%;
+  background-color: #36407F;
+  color: #FFFFFF;
+}
+
 .scoreinfo {
   vertical-align: top;
   padding-right:15px;
+  padding-bottom: 50px;
+}
+
+.raitingname{
+  color:red;
 }
 
 img{
-  width: 240px;
-  height: 240px;
+  width: 340px;
+  height: 340px;
 }
