@@ -38,7 +38,7 @@ while ($row = mysqli_fetch_array($data)) {
     if (is_file(GW_UPLOADPATH . $row['screenshot']) && filesize(GW_UPLOADPATH . $row['screenshot']) > 0) {
         echo '<td><img src=\'' . GW_UPLOADPATH . $row['screenshot'] . '\' alt="Подтверждено"/>' . '</td></tr>';
     } else {
-        echo '<td><img src=\'' . GW_UPLOADPATH . ' unverified.gif\' alt="Не подтверждено"/></td></tr>';
+        echo '<td><img src=\'' . GW_UPLOADPATH . 'unverified.gif\' alt="Не подтверждено"/></td></tr>';
     }
     $i++;
 }
