@@ -12,12 +12,16 @@
 <?php
 require_once('config.php');
 if (isset($_POST['submit'])) {
-    // Grab the score data from the POST
-    $name = $_POST['name'];
-    $score = $_POST['score'];
-    $screenshot = $_FILES['screenshot']['name'];
+    // Connect to the database
+    $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
+    or die('Cant connect to DB');
 
-    if (!empty($name) && !empty($score) && !empty($screenshot)) {
+    // Grab the score data from the POST
+    $name = trim(mysqli_escape_string($dbc, $_POST['name']));
+    $score = trim(mysqli_escape_string($dbc, $_POST['score']));
+    $screenshot = trim(mysqli_escape_string($dbc, $_FILES['screenshot']['name']));
+
+    if (!empty($name) && is_numeric($score) && !empty($screenshot)) {
         //Определяем тип и размер файла
         $screenshot_type = $_FILES['screenshot']['type'];
         $screenshot_size = $_FILES['screenshot']['size'];
@@ -28,12 +32,8 @@ if (isset($_POST['submit'])) {
                 $target = GW_UPLOADPATH . $screenshot;
                 move_uploaded_file($_FILES['screenshot']['tmp_name'], GW_UPLOADPATH . $screenshot);
 
-                // Connect to the database
-                $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
-                or die('Cant connect to DB');
-
                 // Write the data to the database
-                $query = "INSERT INTO guitarwars VALUES (0, NOW(), '$name', '$score', '$screenshot', 0)";
+                $query = "INSERT INTO guitarwars (date, name, score, screenshot) VALUES (NOW(), '$name', '$score', '$screenshot')";
                 mysqli_query($dbc, $query)
                 or die('Cant execute query');
 
@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
         //Удаляем временный файл с сервера
         @unlink($_FILES['screenshot']['tmp_name']);
     } else {
-        echo '<p class="error">Пожалуйста, заполните полную информацию о своем рекорде.</p>';
+        echo '<p class="error">Пожалуйста, заполните правильно информацию о своем рекорде.</p>';
     }
 }
 ?>

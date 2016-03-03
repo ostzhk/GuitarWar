@@ -35,8 +35,8 @@ echo '<td>' . $row['screenshot'] . '</td>';
 echo '<td><a href="removescore.php?id=' . $row['id'] . '&amp;date=' . $row['date'] . '&amp;name=' . $row['name'] .
 '&amp;score=' . $row['score'] . '&amp;screenshot=' . $row['screenshot'] . '">Удалить</a></td>';
     if($row['approved']==0){
-        echo '<td><a href="approvescore.php?id=' . $row['id'] . '&amp;date=' . $row['date'] . '&amp;name=' . $row['name'] .
-            '&amp;score=' . $row['score'] . '&amp;screenshot=' . $row['screenshot'] . '">Подтвердить</a></td></tr>';
+        echo '<td><a href="approvescore.php?id=' . $row['id'] . '&amp;name=' . $row['name'] .
+            '&amp;score=' . $row['score'] . '">Подтвердить</a></td></tr>';
     }else{
         echo '</tr>';
     }
