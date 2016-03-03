@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
                 or die('Cant connect to DB');
 
                 // Write the data to the database
-                $query = "INSERT INTO guitarwars VALUES (0, NOW(), '$name', '$score', '$screenshot')";
+                $query = "INSERT INTO guitarwars VALUES (0, NOW(), '$name', '$score', '$screenshot', 0)";
                 mysqli_query($dbc, $query)
                 or die('Cant execute query');
 

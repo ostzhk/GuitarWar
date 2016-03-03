@@ -18,7 +18,7 @@ $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
 or die('Cant connect to DB');
 
 // Retrieve the score data from MySQL
-$query = "SELECT * FROM guitarwars ORDER BY score DESC ";
+$query = "SELECT * FROM guitarwars where approved = 1 ORDER BY score DESC ";
 $data = mysqli_query($dbc, $query)
 or die('Cant execute query');
 

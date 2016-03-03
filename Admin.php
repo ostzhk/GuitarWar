@@ -20,7 +20,7 @@ $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
 or die('Cant connect to DB');
 
 // Retrieve the score data from MySQL
-$query = "SELECT * FROM guitarwars ORDER BY score DESC ";
+$query = "SELECT * FROM guitarwars ORDER BY date ";
 $data = mysqli_query($dbc, $query)
 or die('Cant execute query');
 
@@ -33,7 +33,13 @@ echo '<td>' . $row['score'] . '</td>';
 echo '<td>' . $row['date'] . '</td>';
 echo '<td>' . $row['screenshot'] . '</td>';
 echo '<td><a href="removescore.php?id=' . $row['id'] . '&amp;date=' . $row['date'] . '&amp;name=' . $row['name'] .
-'&amp;score=' . $row['score'] . '&amp;screenshot=' . $row['screenshot'] . '">Удалить</a></td></tr>';
+'&amp;score=' . $row['score'] . '&amp;screenshot=' . $row['screenshot'] . '">Удалить</a></td>';
+    if($row['approved']==0){
+        echo '<td><a href="approvescore.php?id=' . $row['id'] . '&amp;date=' . $row['date'] . '&amp;name=' . $row['name'] .
+            '&amp;score=' . $row['score'] . '&amp;screenshot=' . $row['screenshot'] . '">Подтвердить</a></td></tr>';
+    }else{
+        echo '</tr>';
+    }
 }
 echo '</table>';
 mysqli_close($dbc);
