@@ -25,12 +25,13 @@ DROP TABLE IF EXISTS `guitarwars`;
 CREATE TABLE `guitarwars` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `name` varchar(32) DEFAULT NULL,
-  `score` int(11) DEFAULT NULL,
+  `name` varchar(32) NOT NULL,
+  `score` int(11) NOT NULL,
   `screenshot` varchar(50) DEFAULT NULL,
+  `approved` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +40,7 @@ CREATE TABLE `guitarwars` (
 
 LOCK TABLES `guitarwars` WRITE;
 /*!40000 ALTER TABLE `guitarwars` DISABLE KEYS */;
-INSERT INTO `guitarwars` VALUES (25,'2016-02-28 10:10:26','ÐÐ»ÑŒÐ±Ð¸Ð½Ð°',450,'nevilsscore.gif'),(26,'2016-02-28 10:11:34','12',12,''),(27,'2016-02-28 10:15:14','12',2,''),(28,'2016-02-28 10:16:03','2',3,''),(29,'2016-02-28 10:16:22','1',3,''),(30,'2016-02-28 10:16:39','1',3,'pacosscore.gif'),(31,'2016-02-28 10:19:04','Ð¸Ð¼Ñ',130,'phizsscore.gif'),(32,'2016-02-28 10:20:36','1',2,''),(33,'2016-02-28 10:28:11','1',3,''),(34,'2016-02-28 10:28:58','1',2,''),(35,'2016-02-28 10:29:08','1',3,'phizsscore.gif'),(36,'2016-02-28 10:35:36','1',2,''),(37,'2016-02-28 10:35:54','1',2,'nevilsscore.gif');
+INSERT INTO `guitarwars` VALUES (38,'2016-02-28 11:34:03','Kostya',500,'kennysscore.gif',0),(39,'2016-02-28 11:44:46','Nevil J',98430,'nevilsscore.gif',1),(44,'2016-02-28 11:47:48','Kenny Lav',64930,'kennysscore.gif',1),(49,'2016-03-03 01:00:09','ÐÐ»ÑŒÐ±Ð¸Ð½Ð°',5000,'jacobsscore.gif',1),(51,'2016-03-03 23:34:43','vodokat',120,'jacobsscore.gif',1),(52,'2016-03-03 23:45:01','12,',12,'jacobsscore.gif',0),(53,'2016-03-03 23:53:42','123',123,'jacobsscore.gif',0);
 /*!40000 ALTER TABLE `guitarwars` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-28 16:42:13
+-- Dump completed on 2016-03-04  6:12:34
